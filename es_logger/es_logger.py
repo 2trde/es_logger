@@ -13,7 +13,7 @@ def log_error(name, params):
 def _write_to_es(name, params, type):
     params = _curate(params)
     params['name'] = name
-    params['app'] = os.environ['APP_NAME']
+    params['app'] = os.environ['APP_NAME'] if 'APP_NAME' in os.environ else None
     params['timestamp'] = datetime.datetime.utcnow().isoformat()
     
     try:
