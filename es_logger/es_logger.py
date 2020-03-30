@@ -4,11 +4,11 @@ import requests
 import datetime
 
 def log_event(name, params):
-    _write_to_es(name, params, 'event')
+    _write_to_es(name, params, 'events')
 
 def log_error(name, params):
     params['traceback'] = traceback.format_exc()
-    _write_to_es(name, params, 'error')
+    _write_to_es(name, params, 'errors')
 
 def _write_to_es(name, params, type):
     params = _curate(params)
