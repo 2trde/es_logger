@@ -21,7 +21,7 @@ def _write_to_es(name, params, type):
                                       os.environ['ES_INDEX_PREFIX'] if 'ES_INDEX_PREFIX' in os.environ else 'prod',
                                       type,
                                       datetime.datetime.utcnow().strftime("%Y_%m"),
-                                      type)
+                                      "_doc")
         r = requests.post(url, json = params)
         print('Logging to elasticsearch - {}, {}: {}'.format(r.status_code, r.reason, r.text))
     except:
